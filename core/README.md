@@ -8,7 +8,7 @@ React Back To Top
 
 A minimal lightweight react component for adding a nice scroll up (back to top) button with onScroll progress.
 
-[![React Back To Top](https://user-images.githubusercontent.com/1680273/187045874-cefc69e5-88ca-48e2-80a8-4d77c817123a.png)](https://uiwjs.github.io/react-back-to-top/)
+[![React Back To Top](https://user-images.githubusercontent.com/1680273/187046278-0e160636-f114-4232-8511-f8c45a665093.png)](https://uiwjs.github.io/react-back-to-top/)
 
 ## Install
 
@@ -69,7 +69,7 @@ export default function App() {
   const [element, setElement]= useState();
   useEffect(() => setElement($dom.current), [])
   return (
-    <Warpper ref={$dom} className="container">
+    <Warpper ref={$dom}>
       <h1>React simple scroll up with onScroll progress</h1>
       <p>React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.</p>
       <h2>Scroll down ↓</h2>
