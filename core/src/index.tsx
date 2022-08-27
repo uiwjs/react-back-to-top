@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 export interface BackToUpProps extends React.AllHTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
   /** Scroll bar area @default document.documentElement **/
-  element?: HTMLElement;
+  element?: HTMLElement | null;
   /** Whether to use smooth scrolling* @default true */
   smooth?: boolean;
   /** Classname to add/override styling (note, !important for overrides might be needed) */
@@ -19,7 +19,7 @@ export interface BackToUpProps extends React.AllHTMLAttributes<HTMLDivElement> {
 }
 
 const warpperStyle: React.CSSProperties = {
-  position: 'fixed',
+  position: 'sticky',
   bottom: 15,
   right: 15,
   visibility: 'visible',
@@ -33,9 +33,11 @@ const svgStyle: React.CSSProperties = {
   display: 'block',
   transform: 'rotate(-90deg)',
 };
+
 const circleStyle: React.CSSProperties = {
   transition: 'stroke-dashoffset 0.3s linear 0s',
 };
+
 const childStyle: React.CSSProperties = {
   position: 'absolute',
   top: 0,
@@ -48,11 +50,13 @@ const childStyle: React.CSSProperties = {
   fontSize: 12,
 };
 
+const documentElement = document.documentElement;
+
 export default function BackToUp(props: BackToUpProps = {}) {
   const {
     className,
     prefixCls = 'w-back-to-up',
-    element = document.documentElement,
+    element = documentElement,
     top = 120,
     size = 35,
     strokeWidth = 3,
@@ -61,7 +65,12 @@ export default function BackToUp(props: BackToUpProps = {}) {
     ...others
   } = props;
   const cls = [className, prefixCls].filter(Boolean).join(' ');
-  const style: React.CSSProperties = Object.assign({}, warpperStyle, others.style, { width: size, height: size });
+  const style: React.CSSProperties = Object.assign({}, warpperStyle, others.style, {
+    width: size,
+    height: size,
+    opacity: top === 0 ? 1 : 0,
+    position: element === documentElement ? 'fixed' : 'sticky',
+  });
   const $dom = useRef<HTMLDivElement>(null);
   const center = useMemo(() => size / 2, [size]);
   const radius = useMemo(() => size / 2 - strokeWidth / 2, [size, strokeWidth]);
@@ -69,27 +78,28 @@ export default function BackToUp(props: BackToUpProps = {}) {
   const [progress, setProgress] = useState(dasharray);
 
   const handleScroll = (ev: MouseEventInit) => {
-    const { clientHeight, scrollHeight, scrollTop } = document.documentElement;
+    const { clientHeight, scrollHeight, scrollTop } = element || documentElement;
     const percentage = scrollTop / (scrollHeight - clientHeight);
     setProgress(dasharray - dasharray * percentage);
-    if ($dom.current) {
+    if ($dom.current && top > 0) {
       $dom.current.style.opacity = scrollTop > top ? '1' : '0';
     }
   };
 
   useEffect(() => {
-    if (element) {
-      document.addEventListener('scroll', handleScroll, { passive: true });
+    const scrollElement = element === documentElement ? document : element;
+    if (scrollElement) {
+      scrollElement.addEventListener('scroll', handleScroll, { passive: true });
     }
     return () => {
-      if (document) {
-        document.removeEventListener('scroll', handleScroll);
+      if (scrollElement) {
+        scrollElement.removeEventListener('scroll', handleScroll);
       }
     };
-  }, []);
+  }, [element]);
 
   const goToUp = (ev: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    element.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+    element!.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
   };
 
   return (
