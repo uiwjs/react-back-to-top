@@ -1,6 +1,5 @@
 import GitHubCorners from '@uiw/react-github-corners';
 import styled from 'styled-components';
-// import BackToTop from '@uiw/react-back-to-top';
 import logo from './logo.svg';
 import MarkdownPreview from './Markdown';
 
