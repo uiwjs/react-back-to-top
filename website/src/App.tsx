@@ -1,7 +1,6 @@
 import GitHubCorners from '@uiw/react-github-corners';
 import styled from 'styled-components';
-import pkg from '@uiw/react-monorepo-template/package.json';
-import MonorepoTemplate from '@uiw/react-monorepo-template';
+// import BackToTop from '@uiw/react-back-to-top';
 import logo from './logo.svg';
 import MarkdownPreview from './Markdown';
 
@@ -18,6 +17,10 @@ const Header = styled.header`
   padding-bottom: 5rem;
   padding-top: 3rem;
   text-align: center;
+  h1 sup {
+    position: absolute;
+    font-size: 0.5rem;
+  }
 `;
 
 const Logo = styled.img`
@@ -33,14 +36,15 @@ export default function App() {
   const version = VERSION;
   return (
     <Warpper className="wmde-markdown-color">
-      <GitHubCorners fixed target="__blank" zIndex={10} href="https://github.com/uiwjs/react-monorepo-template" />
+      <GitHubCorners fixed target="__blank" zIndex={10} href="https://github.com/uiwjs/react-back-to-top" />
       <Header>
         <Logo src={logo} alt="react logo" />
         <h1>
-          {pkg.name} {version}
+          React Back To Top <sup>{version}</sup>
         </h1>
-        <Info>Simple React package development project example template.</Info>
-        <MonorepoTemplate>import MonorepoTemplate from '@uiw/react-monorepo-template';</MonorepoTemplate>
+        <Info>
+          A minimal lightweight react component for adding a nice scroll up (back to top) button with onScroll progress.
+        </Info>
       </Header>
       <MarkdownPreview />
     </Warpper>

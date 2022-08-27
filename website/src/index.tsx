@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { createGlobalStyle } from 'styled-components';
 import '@wcj/dark-mode';
 import App from './App';
@@ -47,11 +47,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container!);
+root.render(
   <React.StrictMode>
     <dark-mode permanent dark="Dark" light="Light" style={{ position: 'fixed', top: 8, left: 8, zIndex: 99 }} />
     <GlobalStyle />
     <App />
   </React.StrictMode>,
-  document.getElementById('root'),
 );

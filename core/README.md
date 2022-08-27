@@ -1,34 +1,58 @@
-react-monorepo-template
+React Back To Top
 ===
 
-[![Build & Deploy](https://github.com/uiwjs/react-monorepo-template/actions/workflows/ci.yml/badge.svg)](https://github.com/uiwjs/react-monorepo-template/actions/workflows/ci.yml)
-[![Coverage Status](https://uiwjs.github.io/react-monorepo-template/badges.svg)](https://uiwjs.github.io/react-monorepo-template/coverage/lcov-report/)
+[![Build & Deploy](https://github.com/uiwjs/react-back-to-top/actions/workflows/ci.yml/badge.svg)](https://github.com/uiwjs/react-back-to-top/actions/workflows/ci.yml)
+[![Coverage Status](https://uiwjs.github.io/react-back-to-top/badges.svg)](https://uiwjs.github.io/react-back-to-top/coverage/lcov-report/)
 
-Simple [React](https://github.com/facebook/react) package development project example template.
+A minimal lightweight react component for adding a nice scroll up (back to top) button with onScroll progress.
 
-## Directory Structure
+## Install
+
+Not dependent on uiw.
 
 ```bash
-├── LICENSE
-├── README.md -> core/README.md
-├── core              # 📦 package @uiw/react-monorepo-template
-│   ├── README.md
-│   ├── cjs           # 🔄 Compiled cjs directory
-│   ├── esm           # 🔄 Compiled esm directory
-│   ├── src           # Package source directory
-│   ├── dist.css      # 🔄 compile less to css
-│   ├── package.json  # name => @uiw/react-monorepo-template
-│   └── tsconfig.json
-├── lerna.json
-├── package.json
-├── tsconfig.json
-├── test              # ⛑ test case
-└── website           # 🐝 Package example test, website
-    ├── README.md
-    ├── package.json
-    ├── public
-    ├── src
-    └── tsconfig.json
+npm install @uiw/react-codemirror --save
+```
+
+## Usage
+
+```jsx mdx:preview
+import React from "react";
+import BackToTop from '@uiw/react-back-to-top';
+
+export default function App() {
+  return (
+    <div className="container">
+      <span style={{ color: 'red' }}>
+        Please check the button in the lower right corner of your web page.
+      </span>
+      <BackToTop>Top</BackToTop>
+    </div>
+  );
+}
+```
+
+## Props
+
+```ts
+import React from 'react';
+export interface BackToUpProps extends React.AllHTMLAttributes<HTMLDivElement> {
+  prefixCls?: string;
+  /** Scroll bar area @default document.documentElement **/
+  element?: Element;
+  /** Classname to add/override styling (note, !important for overrides might be needed) */
+  className?: string;
+  /** Object to add/override styling */
+  style?: React.CSSProperties;
+  /** Height after page scroll to be visible @default 20 **/
+  top?: number;
+  /** The Button width @default 35 */
+  width?: number;
+  /** The Button height @default 35 */
+  height?: number;
+}
+export default function BackToUp(props?: BackToUpProps): JSX.Element;
+
 ```
 
 ## Development
@@ -48,8 +72,8 @@ npm run hoist
 3. To develop, run the self-reloading build:
 
 ```bash
-npm run build  # Compile packages      📦 @uiw/react-monorepo-template
-npm run watch  # Real-time compilation 📦 @uiw/react-monorepo-template
+npm run build  # Compile packages      📦 @uiw/react-back-to-top
+npm run watch  # Real-time compilation 📦 @uiw/react-back-to-top
 ```
 
 4. Run Document Website Environment:
@@ -64,33 +88,15 @@ npm run start
 npm run test
 ```
 
-
-### Using
-
-```jsx mdx:preview
-import React from "react";
-import MonorepoTemplate from '@uiw/react-monorepo-template';
-
-export default function App() {
-  return (
-    <div className="container">
-    <MonorepoTemplate>
-      Example test
-    </MonorepoTemplate>
-    </div>
-  );
-}
-```
-
 ## Contributors
 
 As always, thanks to our amazing contributors!
 
-<a href="https://github.com/uiwjs/react-monorepo-template/graphs/contributors">
-  <img src="https://uiwjs.github.io/react-monorepo-template/CONTRIBUTORS.svg" />
+<a href="https://github.com/uiwjs/react-back-to-top/graphs/contributors">
+  <img src="https://uiwjs.github.io/react-back-to-top/CONTRIBUTORS.svg" />
 </a>
 
-Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+Made with [github-action](https://github.com/jaywcjlove/github-action-contributors).
 
 ## License
 

@@ -1,12 +1,12 @@
 {
-  "name": "@uiw/react-monorepo-template",
-  "version": "1.1.0",
-  "description": "React Monorepo Template.",
+  "name": "@uiw/react-back-to-top",
+  "version": "1.0.0",
+  "description": "A minimal lightweight react component for adding a nice scroll up (back to top) button with onScroll progress.",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "homepage": "https://uiwjs.github.io/react-monorepo-template",
+  "homepage": "https://uiwjs.github.io/react-back-to-top",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uiwjs/react-monorepo-template.git"
+    "url": "https://github.com/uiwjs/react-back-to-top.git"
   },
   "license": "MIT",
   "main": "./cjs/index.js",
@@ -22,12 +22,10 @@
     "access": "public"
   },
   "keywords": [
-    "react-monorepo-template",
+    "react-back-to-top",
     "react.js",
     "react",
-    "template",
-    "monorepo",
-    "monorepo-template",
+    "back-to-top",
     "uiw",
     "uiw-react",
     "react-component",
@@ -36,7 +34,6 @@
     "ui",
     "css",
     "uikit",
-    "react-ui",
     "framework"
   ],
   "peerDependencies": {
