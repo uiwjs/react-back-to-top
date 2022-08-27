@@ -12,11 +12,9 @@ export interface BackToUpProps extends React.AllHTMLAttributes<HTMLDivElement> {
   style?: React.CSSProperties;
   /** Height after page scroll to be visible @default 120 **/
   top?: number;
-  /** The Button width @default 35 */
-  width?: number;
-  /** The Button height @default 35 */
-  height?: number;
+  /** The Button width & height @default 35 */
   size?: number;
+  /** the width of the progress bar */
   strokeWidth?: number;
 }
 
