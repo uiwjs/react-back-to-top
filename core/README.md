@@ -41,17 +41,19 @@ import React from 'react';
 export interface BackToUpProps extends React.AllHTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
   /** Scroll bar area @default document.documentElement **/
-  element?: Element;
+  element?: HTMLElement;
+  /** Whether to use smooth scrolling* @default true */
+  smooth?: boolean;
   /** Classname to add/override styling (note, !important for overrides might be needed) */
   className?: string;
   /** Object to add/override styling */
   style?: React.CSSProperties;
-  /** Height after page scroll to be visible @default 20 **/
+  /** Height after page scroll to be visible @default 120 **/
   top?: number;
-  /** The Button width @default 35 */
-  width?: number;
-  /** The Button height @default 35 */
-  height?: number;
+  /** The Button width & height @default 35 */
+  size?: number;
+  /** the width of the progress bar */
+  strokeWidth?: number;
 }
 export default function BackToUp(props?: BackToUpProps): JSX.Element;
 
