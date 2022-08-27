@@ -8,7 +8,7 @@ React Back To Top
 
 A minimal lightweight react component for adding a nice scroll up (back to top) button with onScroll progress.
 
-[![React Back To Top](https://user-images.githubusercontent.com/1680273/187046278-0e160636-f114-4232-8511-f8c45a665093.png)](https://uiwjs.github.io/react-back-to-top/)
+[![React Back To Top](https://user-images.githubusercontent.com/1680273/187046411-677c24c4-043a-4505-b2ef-6bd1eb7ad311.png)](https://uiwjs.github.io/react-back-to-top/)
 
 ## Install
 
