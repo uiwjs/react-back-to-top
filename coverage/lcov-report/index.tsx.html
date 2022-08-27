@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">81.25% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/30</span>
+                <span class='fraction'>26/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52.63% </span>
+                <span class="strong">44.82% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>10/19</span>
+                <span class='fraction'>13/29</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.77% </span>
+                <span class="strong">79.31% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>21/27</span>
+                <span class='fraction'>23/29</span>
             </div>
         
             
@@ -184,7 +184,17 @@
 <a name='L119'></a><a href='#L119'>119</a>
 <a name='L120'></a><a href='#L120'>120</a>
 <a name='L121'></a><a href='#L121'>121</a>
-<a name='L122'></a><a href='#L122'>122</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,21 +229,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -246,8 +247,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -263,6 +282,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -310,7 +330,7 @@
 export interface BackToUpProps extends React.AllHTMLAttributes&lt;HTMLDivElement&gt; {
   prefixCls?: string;
   /** Scroll bar area @default document.documentElement **/
-  element?: HTMLElement;
+  element?: HTMLElement | null;
   /** Whether to use smooth scrolling* @default true */
   smooth?: boolean;
   /** Classname to add/override styling (note, !important for overrides might be needed) */
@@ -326,7 +346,7 @@ export interface BackToUpProps extends React.AllHTMLAttributes&lt;HTMLDivElement
 }
 &nbsp;
 const warpperStyle: React.CSSProperties = {
-  position: 'fixed',
+  position: 'sticky',
   bottom: 15,
   right: 15,
   visibility: 'visible',
@@ -340,9 +360,11 @@ const svgStyle: React.CSSProperties = {
   display: 'block',
   transform: 'rotate(-90deg)',
 };
+&nbsp;
 const circleStyle: React.CSSProperties = {
   transition: 'stroke-dashoffset 0.3s linear 0s',
 };
+&nbsp;
 const childStyle: React.CSSProperties = {
   position: 'absolute',
   top: 0,
@@ -355,11 +377,13 @@ const childStyle: React.CSSProperties = {
   fontSize: 12,
 };
 &nbsp;
+const documentElement = document.documentElement;
+&nbsp;
 export default function BackToUp(props: BackToUpProps = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
   const {
     className,
     prefixCls = 'w-back-to-up',
-    element = document.documentElement,
+    element = documentElement,
     top = 120,
     size = 35,
     strokeWidth = 3,
@@ -368,7 +392,12 @@ export default function BackToUp(props: BackToUpProps = <span class="branch-0 cb
     ...others
   } = props;
   const cls = [className, prefixCls].filter(Boolean).join(' ');
-  const style: React.CSSProperties = Object.assign({}, warpperStyle, others.style, { width: size, height: size });
+  const style: React.CSSProperties = Object.assign({}, warpperStyle, others.style, {
+    width: size,
+    height: size,
+    opacity: top === 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >1 </span>: 0,
+    position: element === documentElement ? 'fixed' : <span class="branch-1 cbranch-no" title="branch not covered" >'sticky',</span>
+  });
   const $dom = useRef&lt;HTMLDivElement&gt;(null);
   const center = useMemo(() =&gt; size / 2, [size]);
   const radius = useMemo(() =&gt; size / 2 - strokeWidth / 2, [size, strokeWidth]);
@@ -376,27 +405,28 @@ export default function BackToUp(props: BackToUpProps = <span class="branch-0 cb
   const [progress, setProgress] = useState(dasharray);
 &nbsp;
   const handleScroll = <span class="fstat-no" title="function not covered" >(e</span>v: MouseEventInit) =&gt; {
-    const { clientHeight, scrollHeight, scrollTop } = <span class="cstat-no" title="statement not covered" >document.documentElement;</span>
+    const { clientHeight, scrollHeight, scrollTop } = <span class="cstat-no" title="statement not covered" >element || documentElement;</span>
     const percentage = <span class="cstat-no" title="statement not covered" >scrollTop / (scrollHeight - clientHeight);</span>
 <span class="cstat-no" title="statement not covered" >    setProgress(dasharray - dasharray * percentage);</span>
-<span class="cstat-no" title="statement not covered" >    if ($dom.current) {</span>
+<span class="cstat-no" title="statement not covered" >    if ($dom.current &amp;&amp; top &gt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >      $dom.current.style.opacity = scrollTop &gt; top ? '1' : '0';</span>
     }
   };
 &nbsp;
   useEffect(() =&gt; {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (element) {
-      document.addEventListener('scroll', handleScroll, { passive: true });
+    const scrollElement = element === documentElement ? document : <span class="branch-1 cbranch-no" title="branch not covered" >element;</span>
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (scrollElement) {
+      scrollElement.addEventListener('scroll', handleScroll, { passive: true });
     }
     return () =&gt; {
-      <span class="missing-if-branch" title="else path not taken" >E</span>if (document) {
-        document.removeEventListener('scroll', handleScroll);
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (scrollElement) {
+        scrollElement.removeEventListener('scroll', handleScroll);
       }
     };
-  }, []);
+  }, [element]);
 &nbsp;
   const goToUp = <span class="fstat-no" title="function not covered" >(e</span>v: React.MouseEvent&lt;HTMLDivElement, MouseEvent&gt;) =&gt; {
-<span class="cstat-no" title="statement not covered" >    element.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });</span>
+<span class="cstat-no" title="statement not covered" >    element!.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });</span>
   };
 &nbsp;
   return (
@@ -433,7 +463,7 @@ export default function BackToUp(props: BackToUpProps = <span class="branch-0 cb
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-27T18:45:25.950Z
+                at 2022-08-27T19:44:40.812Z
             </div>
         <script src="prettify.js"></script>
         <script>
