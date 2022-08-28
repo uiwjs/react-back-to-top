@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">44.82% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>13/29</span>
+                <span class='fraction'>16/32</span>
             </div>
         
             
@@ -201,7 +201,12 @@
 <a name='L136'></a><a href='#L136'>136</a>
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -213,15 +218,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -237,6 +233,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,6 +261,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -313,6 +321,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -343,7 +353,7 @@
 &nbsp;
 export interface BackToUpProps extends React.AllHTMLAttributes&lt;HTMLDivElement&gt; {
   prefixCls?: string;
-  /** Scroll bar area @default document.documentElement **/
+  /** Scroll bar area @default document.documentElement */
   element?: HTMLElement | null;
   /** Whether to use smooth scrolling* @default true */
   smooth?: boolean;
@@ -351,12 +361,14 @@ export interface BackToUpProps extends React.AllHTMLAttributes&lt;HTMLDivElement
   className?: string;
   /** Object to add/override styling */
   style?: React.CSSProperties;
-  /** Height after page scroll to be visible @default 120 **/
+  /** Height after page scroll to be visible @default 120 */
   top?: number;
   /** The Button width &amp; height @default 35 */
   size?: number;
   /** the width of the progress bar */
   strokeWidth?: number;
+  /** hide progress icon */
+  hideProgress?: boolean;
 }
 &nbsp;
 const warpperStyle: React.CSSProperties = {
@@ -402,6 +414,7 @@ export default function BackToUp(props: BackToUpProps = <span class="branch-0 cb
     size = 35,
     strokeWidth = 3,
     smooth = true,
+    hideProgress = false,
     children,
     ...others
   } = props;
@@ -452,27 +465,29 @@ export default function BackToUp(props: BackToUpProps = <span class="branch-0 cb
 &nbsp;
   return (
     &lt;div className={cls} ref={$dom} {...others} onClick={goToUp} style={style}&gt;
-      &lt;svg viewBox={`0 0 ${size} ${size}`} width={size} height={size} focusable="false" style={svgStyle}&gt;
-        &lt;circle
-          fill="rgb(0 0 0 / 75%)"
-          stroke="rgb(200 200 200 / 85%)"
-          strokeWidth={strokeWidth}
-          r={radius}
-          cx={center}
-          cy={center}
-        /&gt;
-        &lt;circle
-          fill="none"
-          stroke="rgb(0 0 0 / 50%)"
-          strokeWidth={strokeWidth}
-          r={radius}
-          cx={center}
-          cy={center}
-          strokeDasharray={dasharray}
-          strokeDashoffset={progress}
-          style={circleStyle}
-        /&gt;
-      &lt;/svg&gt;
+      {!hideProgress &amp;&amp; (
+        &lt;svg viewBox={`0 0 ${size} ${size}`} width={size} height={size} focusable="false" style={svgStyle}&gt;
+          &lt;circle
+            fill="rgb(0 0 0 / 75%)"
+            stroke="rgb(200 200 200 / 85%)"
+            strokeWidth={strokeWidth}
+            r={radius}
+            cx={center}
+            cy={center}
+          /&gt;
+          &lt;circle
+            fill="none"
+            stroke="rgb(0 0 0 / 50%)"
+            strokeWidth={strokeWidth}
+            r={radius}
+            cx={center}
+            cy={center}
+            strokeDasharray={dasharray}
+            strokeDashoffset={progress}
+            style={circleStyle}
+          /&gt;
+        &lt;/svg&gt;
+      )}
       {children &amp;&amp; &lt;div style={childStyle}&gt;{children}&lt;/div&gt;}
     &lt;/div&gt;
   );
@@ -484,7 +499,7 @@ export default function BackToUp(props: BackToUpProps = <span class="branch-0 cb
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-28T11:51:23.076Z
+                at 2022-08-28T11:55:47.652Z
             </div>
         <script src="prettify.js"></script>
         <script>
