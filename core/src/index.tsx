@@ -65,12 +65,19 @@ export default function BackToUp(props: BackToUpProps = {}) {
     ...others
   } = props;
   const cls = [className, prefixCls].filter(Boolean).join(' ');
-  const style: React.CSSProperties = Object.assign({}, warpperStyle, others.style, {
-    width: size,
-    height: size,
-    opacity: top === 0 ? 1 : 0,
-    position: element === documentElement ? 'fixed' : 'sticky',
-  });
+  const style: React.CSSProperties = Object.assign(
+    {},
+    warpperStyle,
+    {
+      position: element === documentElement ? 'fixed' : 'sticky',
+    },
+    others.style,
+    {
+      width: size,
+      height: size,
+      opacity: top === 0 ? 1 : 0,
+    },
+  );
   const $dom = useRef<HTMLDivElement>(null);
   const center = useMemo(() => size / 2, [size]);
   const radius = useMemo(() => size / 2 - strokeWidth / 2, [size, strokeWidth]);
