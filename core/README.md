@@ -103,6 +103,8 @@ export interface BackToUpProps extends React.AllHTMLAttributes<HTMLDivElement> {
   size?: number;
   /** the width of the progress bar */
   strokeWidth?: number;
+  /** hide progress icon */
+  hideProgress?: boolean;
 }
 export default function BackToUp(props?: BackToUpProps): JSX.Element;
 ```

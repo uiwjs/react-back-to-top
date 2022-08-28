@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 export interface BackToUpProps extends React.AllHTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
-  /** Scroll bar area @default document.documentElement **/
+  /** Scroll bar area @default document.documentElement */
   element?: HTMLElement | null;
   /** Whether to use smooth scrolling* @default true */
   smooth?: boolean;
@@ -10,12 +10,14 @@ export interface BackToUpProps extends React.AllHTMLAttributes<HTMLDivElement> {
   className?: string;
   /** Object to add/override styling */
   style?: React.CSSProperties;
-  /** Height after page scroll to be visible @default 120 **/
+  /** Height after page scroll to be visible @default 120 */
   top?: number;
   /** The Button width & height @default 35 */
   size?: number;
   /** the width of the progress bar */
   strokeWidth?: number;
+  /** hide progress icon */
+  hideProgress?: boolean;
 }
 
 const warpperStyle: React.CSSProperties = {
@@ -61,6 +63,7 @@ export default function BackToUp(props: BackToUpProps = {}) {
     size = 35,
     strokeWidth = 3,
     smooth = true,
+    hideProgress = false,
     children,
     ...others
   } = props;
@@ -111,27 +114,29 @@ export default function BackToUp(props: BackToUpProps = {}) {
 
   return (
     <div className={cls} ref={$dom} {...others} onClick={goToUp} style={style}>
-      <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size} focusable="false" style={svgStyle}>
-        <circle
-          fill="rgb(0 0 0 / 75%)"
-          stroke="rgb(200 200 200 / 85%)"
-          strokeWidth={strokeWidth}
-          r={radius}
-          cx={center}
-          cy={center}
-        />
-        <circle
-          fill="none"
-          stroke="rgb(0 0 0 / 50%)"
-          strokeWidth={strokeWidth}
-          r={radius}
-          cx={center}
-          cy={center}
-          strokeDasharray={dasharray}
-          strokeDashoffset={progress}
-          style={circleStyle}
-        />
-      </svg>
+      {!hideProgress && (
+        <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size} focusable="false" style={svgStyle}>
+          <circle
+            fill="rgb(0 0 0 / 75%)"
+            stroke="rgb(200 200 200 / 85%)"
+            strokeWidth={strokeWidth}
+            r={radius}
+            cx={center}
+            cy={center}
+          />
+          <circle
+            fill="none"
+            stroke="rgb(0 0 0 / 50%)"
+            strokeWidth={strokeWidth}
+            r={radius}
+            cx={center}
+            cy={center}
+            strokeDasharray={dasharray}
+            strokeDashoffset={progress}
+            style={circleStyle}
+          />
+        </svg>
+      )}
       {children && <div style={childStyle}>{children}</div>}
     </div>
   );
