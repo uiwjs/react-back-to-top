@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-back-to-top",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A minimal lightweight react component for adding a nice scroll up (back to top) button with onScroll progress.",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-back-to-top",
