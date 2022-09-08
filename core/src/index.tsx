@@ -67,6 +67,7 @@ export default function BackToUp(props: BackToUpProps = {}) {
     children,
     ...others
   } = props;
+  const $dom = useRef<HTMLDivElement>(null);
   const cls = [className, prefixCls].filter(Boolean).join(' ');
   const style: React.CSSProperties = Object.assign(
     {},
@@ -81,11 +82,10 @@ export default function BackToUp(props: BackToUpProps = {}) {
       opacity: top === 0 ? 1 : 0,
     },
   );
-  const $dom = useRef<HTMLDivElement>(null);
   const center = useMemo(() => size / 2, [size]);
   const radius = useMemo(() => size / 2 - strokeWidth / 2, [size, strokeWidth]);
   const dasharray = useMemo(() => Math.PI * radius * 2, [radius]);
-  const [progress, setProgress] = useState(dasharray);
+  const [progress, setProgress] = useState(dasharray || 0);
 
   const handleScroll = (ev: MouseEventInit) => {
     const { clientHeight, scrollHeight, scrollTop } = element || documentElement;
