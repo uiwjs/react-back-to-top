@@ -6,15 +6,15 @@ on:
 
 jobs:
   windows:
-    runs-on: windows-2019
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
 
       - name: Look Changelog
-        uses: jaywcjlove/changelog-generator@v1.5.7
+        uses: jaywcjlove/changelog-generator@main
         with:
           filter-author: (小弟调调™|Renovate Bot|renovate-bot)
           filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
@@ -26,12 +26,13 @@ jobs:
       - run: npm run doc
 
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          registry-url: 'https://registry.npmjs.org'
 
       - run: npm install --unsafe-perm
       - run: npm run build
@@ -57,14 +58,14 @@ jobs:
 
       - name: Is a tag created auto?
         id: create_tag
-        uses: jaywcjlove/create-tag-action@v1.3.8
+        uses: jaywcjlove/create-tag-action@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           package-path: ./core/package.json
 
       - name: get tag version
         id: tag_version
-        uses: jaywcjlove/changelog-generator@v1.5.7
+        uses: jaywcjlove/changelog-generator@main
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -75,7 +76,7 @@ jobs:
 
       - name: Generate Changelog
         id: changelog
-        uses: jaywcjlove/changelog-generator@v1.5.7
+        uses: jaywcjlove/changelog-generator@main
         if: steps.create_tag.outputs.successful
         with:
           head-ref: ${{ steps.create_tag.outputs.version }}
@@ -99,17 +100,25 @@ jobs:
       # - run: npm install @jsdevtools/npm-publish -g
       # - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./core/package.json
 
-      - name: 📦 @uiw/react-back-to-top publish to NPM
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./core/package.json
+      - run: npm publish --access public
+        name: 📦 @uiw/react-back-to-top publish to NPM
+        continue-on-error: true
+        working-directory: core
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+    outputs:
+      version: ${{ steps.changelog.outputs.version }}
+      create_tag_version: ${{ steps.create_tag.outputs.version }}
+      create_tag_versionNumber: ${{ steps.create_tag.outputs.versionNumber }}
+      tag: ${{ steps.changelog.outputs.tag }}
+      successful: ${{steps.create_tag.outputs.successful }}
+      gh-pages-short-hash: ${{ steps.changelog.outputs.gh-pages-short-hash }}
 
   github-package:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     needs: build
-    if: needs.build-deploy.outputs.successful
+    if: needs.build.outputs.successful
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -129,8 +138,7 @@ jobs:
         if: success() || failure()
         with:
           path: core/package.json
-          data: |
-            { "name": "@uiwjs/react-back-to-top" }
+          rename: '@uiwjs/react-back-to-top'
 
       - run: npm publish
         working-directory: core
