@@ -90,7 +90,7 @@ export default function BackToUp(props: BackToUpProps = {}) {
   const handleScroll = (ev: MouseEventInit) => {
     const { clientHeight, scrollHeight, scrollTop } = element || documentElement;
     const percentage = scrollTop / (scrollHeight - clientHeight);
-    setProgress(dasharray - dasharray * percentage);
+    setProgress(dasharray - dasharray * percentage || 0);
     if ($dom.current && top > 0) {
       $dom.current.style.opacity = scrollTop > top ? '1' : '0';
     }
