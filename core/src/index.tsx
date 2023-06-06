@@ -132,7 +132,7 @@ export default function BackToUp(props: BackToUpProps = {}) {
             cx={center}
             cy={center}
             strokeDasharray={dasharray}
-            strokeDashoffset={progress}
+            strokeDashoffset={progress || 0}
             style={circleStyle}
           />
         </svg>
