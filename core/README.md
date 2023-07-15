@@ -1,5 +1,7 @@
+<!--rehype:ignore:start-->
 React Back To Top
 ===
+<!--rehype:ignore:end-->
 
 [![Build & Deploy](https://github.com/uiwjs/react-back-to-top/actions/workflows/ci.yml/badge.svg)](https://github.com/uiwjs/react-back-to-top/actions/workflows/ci.yml)
 [![Coverage Status](https://uiwjs.github.io/react-back-to-top/badges.svg)](https://uiwjs.github.io/react-back-to-top/coverage/lcov-report/)
