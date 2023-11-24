@@ -43,7 +43,7 @@
     "@kkt/ncc": "^1.0.14",
     "compile-less-cli": "^1.8.13",
     "husky": "^8.0.1",
-    "lerna": "^7.1.3",
+    "lerna": "^8.0.0",
     "lint-staged": "^13.2.0",
     "prettier": "^3.0.0",
     "pretty-quick": "^3.1.3",
